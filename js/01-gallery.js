@@ -1,6 +1,7 @@
 import { galleryItems } from './gallery-items.js';
 
 const galleryEl = document.querySelector(".gallery");
+let imageFromLightbox;
 
 for (const item of galleryItems) {
   const imageEl = document.createElement("li");
@@ -14,19 +15,19 @@ for (const item of galleryItems) {
 
 const showImage = (event) => {
   if (event.target.nodeName !== "IMG") {
-        return;
+    return;
   } else {
-        event.preventDefault();
-        console.log(event.target.nodeName);
-        basicLightbox.create(`<img src="${event.target.dataset.url}">`).show();
-  }
+    event.preventDefault();
+    imageFromLightbox = basicLightbox.create(`<img src="${event.target.dataset.url}">`);
+    imageFromLightbox.show();
+  };
 };
 
 const closeImage = (event) => {
-    if (event.key === "Escape" || event.keyCode === 27) {
-        basicLightbox.close();
-    };
+  if (event.key === "Escape" || event.keyCode === 27) {
+    imageFromLightbox.close();
+  };
 };
 
 galleryEl.addEventListener("click", showImage);
-galleryEl.addEventListener("keydown", closeImage);
+document.addEventListener("keydown", closeImage);
