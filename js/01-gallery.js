@@ -8,7 +8,11 @@ for (const item of galleryItems) {
   imageEl.classList.add("gallery__item");
   imageEl.insertAdjacentHTML(
     "afterbegin",
-    `<a href="${item.original}" class="gallery__link"><img class="gallery__image" src="${item.preview}" data-url="${item.original}" alt="${item.description}"></a>`
+    `
+    <a class="gallery__link" href="${item.original}">
+      <img class="gallery__image" src="${item.preview}" data-source="${item.original}" alt="${item.description}">
+    </a>
+    `
   );
   galleryEl.append(imageEl);
 };
@@ -18,7 +22,7 @@ const showImage = (event) => {
     return;
   } else {
     event.preventDefault();
-    imageFromLightbox = basicLightbox.create(`<img src="${event.target.dataset.url}">`);
+    imageFromLightbox = basicLightbox.create(`<img src="${event.target.dataset.source}">`);
     imageFromLightbox.show();
   };
 };
