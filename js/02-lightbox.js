@@ -18,16 +18,11 @@ for (const item of galleryItems) {
 };
 
 const showImage = event => {
-  if (event.target.nodeName !== "IMG") {
-    return;
-  } else {
-    event.preventDefault();
-    imageFromLightbox = new SimpleLightbox(".gallery a", {
-      captionsData: "alt",
-      captionDelay: 250,
-    });
-
-  }
+  event.preventDefault();
+  imageFromLightbox = new SimpleLightbox(".gallery a", {
+    captionsData: "alt",
+    captionDelay: 250,
+  });
 };
 
 galleryEl.addEventListener("click", showImage);
