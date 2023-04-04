@@ -1,4 +1,4 @@
-import { galleryItems } from './gallery-items.js';
+import { galleryItems } from "./gallery-items.js";
 
 const galleryEl = document.querySelector(".gallery");
 let imageFromLightbox;
@@ -15,22 +15,22 @@ for (const item of galleryItems) {
     `
   );
   galleryEl.append(imageEl);
-};
+}
 
-const showImage = (event) => {
+const showImage = event => {
   if (event.target.nodeName !== "IMG") {
     return;
   } else {
     event.preventDefault();
     imageFromLightbox = basicLightbox.create(`<img src="${event.target.dataset.source}">`);
     imageFromLightbox.show();
-  };
+  }
 };
 
-const closeImage = (event) => {
+const closeImage = event => {
   if (event.key === "Escape" || event.keyCode === 27) {
     imageFromLightbox.close();
-  };
+  }
 };
 
 galleryEl.addEventListener("click", showImage);

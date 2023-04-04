@@ -5,10 +5,11 @@ let imageFromLightbox;
 
 for (const item of galleryItems) {
   const imageEl = document.createElement("li");
+  imageEl.classList.add("gallery__item");  
   imageEl.insertAdjacentHTML(
     "afterbegin",
     `
-    <a class="gallery__item" href="${item.original}">
+    <a class="gallery__link" href="${item.original}">
       <img class="gallery__image" src="${item.preview}" alt="${item.description}">
     </a>
     `
