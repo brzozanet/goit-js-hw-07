@@ -1,7 +1,6 @@
 import { galleryItems } from './gallery-items.js';
 
 const galleryEl = document.querySelector(".gallery");
-let imageFromLightbox;
 
 for (const item of galleryItems) {
   const imageEl = document.createElement("li");
@@ -17,12 +16,17 @@ for (const item of galleryItems) {
   galleryEl.append(imageEl);
 };
 
-const showImage = event => {
-  event.preventDefault();
-  imageFromLightbox = new SimpleLightbox(".gallery a", {
-    captionsData: "alt",
-    captionDelay: 250,
-  });
-};
+// const showImage = event => {
+//   event.preventDefault();
+//   const imageFromLightbox = new SimpleLightbox(".gallery a", {
+//     captionsData: "alt",
+//     captionDelay: 350,
+//   });
+// };
 
-galleryEl.addEventListener("click", showImage);
+// galleryEl.addEventListener("click", showImage);
+
+const imageFromLightbox = new SimpleLightbox(".gallery a", {
+  captionsData: "alt",
+  captionDelay: 350,
+});
